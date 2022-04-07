@@ -24,6 +24,12 @@ li {
   color: #E5E7EB
 }
 
+.info-title {
+  font-size: 35px;
+  font-weight: 900;
+  color: #1F2937
+}
+
 header {
   display: flex;
   align-self: stretch;
@@ -87,4 +93,38 @@ li {
   width: 125px;
   border: none;
   border-radius: 7px;
+}
+
+.info-title {
+  margin: auto;
+  padding: auto;
+}
+
+.information {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+
+}
+
+.thumbnails {
+  padding-top: 25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mini-card {
+  flex-basis: 175px;
+  text-align: center;
+}
+
+.border {
+  width: 125px;
+  height: 125px;
+  border: 3px solid #3882F6;
+  border-radius: 10px;
+  margin: auto;
 }
