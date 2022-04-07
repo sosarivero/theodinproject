@@ -15,7 +15,7 @@ header,
 .hero,
 footer {
   background-color: #1F2937;
-  color: #F9FAF8
+  color: #F9FAF8;
 }
 
 .hero-text,
@@ -146,4 +146,28 @@ li {
   font-size: 24px;
   font-weight: 500;
   text-align: right;
+}
+
+.action {
+  display: flex;
+  width: 65%;
+  margin: 50px;
+  padding: 20px;
+  border-style: none;
+  border-radius: 10px;
+  background-color: #3882F6;
+  justify-content: space-around;
+  align-items: center;
+  color: #F9FAF8
+}
+
+
+.signup-alt {
+  border: 1px #F9FAF8 solid;
+  padding: 4px;
+}
+
+footer {
+  align-self: stretch;
+  text-align: center;
 }
