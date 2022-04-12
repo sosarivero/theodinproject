@@ -3,8 +3,8 @@
 
 const ftoc = function(fahrenheit) {
   // [°C] = ([°F] − 32) × 5⁄9
-let conversion = ((fahrenheit - 32) * 5/9).toFixed(1);
-return Number(conversion);
+  let conversion = ((fahrenheit - 32) * 5/9).toFixed(1);
+  return Number(conversion);
 };
 
 const ctof = function(celsius) {
