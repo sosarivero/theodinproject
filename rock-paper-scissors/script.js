@@ -28,11 +28,12 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
+function game(n) {
+  for (let i = 0; i < n; i++) {
     let playerSelection = prompt("Rock, paper, or scissors?");
     alert(playRound(playerSelection, computerPlay()));
   }
 }
 
-game();
+const ROUNDS = 5;
+game(ROUNDS);
