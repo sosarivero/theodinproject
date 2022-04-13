@@ -32,18 +32,19 @@ function playRound(playerSelection, computerSelection) {
   }
 
   if (playerSelection === computerSelection) {
-    return "Draw!";
+    gameState.textContent = `Draw! The computer also chose ${playerSelection}.`
   } else if ((playerSelection === "Rock" && computerSelection === "Scissors")
           || (playerSelection === "Paper" && computerSelection === "Rock")
           || (playerSelection === "Scissors" && computerSelection === "Paper")) {
             playerScoreCounter.textContent = playerScoreCounter.textContent.replace(/☆/, "★");
+            gameState.textContent = `You win! ${playerSelection} beats ${computerSelection}.`
   } else {
     computerScoreCounter.textContent = computerScoreCounter.textContent.replace(/☆/, "★");
+    gameState.textContent = `You lose! ${playerSelection} loses to ${computerSelection}.`
   }
 }
 
-let playerScore = 0;
-let computerScore = 0;
+const gameState = document.querySelector('#game-state')
 
 const playerScoreCounter = document.querySelector('#human-score');
 const computerScoreCounter = document.querySelector('#computer-score');
