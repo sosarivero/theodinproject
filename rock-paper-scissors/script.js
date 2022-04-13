@@ -20,9 +20,9 @@ function playRound(playerSelection, computerSelection) {
   } else if ((playerSelection === "Rock" && computerSelection === "Scissors")
           || (playerSelection === "Paper" && computerSelection === "Rock")
           || (playerSelection === "Scissors" && computerSelection === "Paper")) {
-            playerScoreCounter.textContent = ++playerScore;
+            playerScoreCounter.textContent = playerScoreCounter.textContent.replace(scoreRegex, "★");
   } else {
-    computerScoreCounter.textContent = ++computerScore;
+    computerScoreCounter.textContent = computerScoreCounter.textContent.replace(scoreRegex, "★");
   }
 }
 
@@ -30,10 +30,12 @@ let playerScore = 0;
 let computerScore = 0;
 const ROUNDS = 5;
 
+const scoreRegex = /☆/;
+const scoreMark = "★"
+
+
 const playerScoreCounter = document.querySelector('#human-score');
-playerScoreCounter.textContent = playerScore;
 const computerScoreCounter = document.querySelector('#computer-score');
-computerScoreCounter.textContent = computerScore;
 
 const playerHand = document.querySelector('#human-play');
 const computerHand = document.querySelector('#computer-play');
