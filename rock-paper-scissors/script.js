@@ -2,15 +2,16 @@
 
 function computerPlay() {
   let choice = Math.floor(Math.random() * 3);
+
   switch (choice) {
     case 0:
-      computerHand.textContent = "Rock";
+      computerHand.textContent = "✊";
       return "Rock";
     case 1:
-      computerHand.textContent = "Rock";
+      computerHand.textContent = "✋";
       return "Paper";
     case 2:
-      computerHand.textContent = "Rock";
+      computerHand.textContent = "✌";
       return "Scissors";
   }
 }
@@ -20,13 +21,13 @@ function playRound(playerSelection, computerSelection) {
 
   switch (playerSelection) {
     case "Rock":
-      playerHand.textContent = "Rock";
+      playerHand.textContent = "✊";
       break;
     case "Paper":
-      playerHand.textContent = "Paper";
+      playerHand.textContent = "✋";
       break;
     case "Scissors":
-      playerHand.textContent = "Scissors";
+      playerHand.textContent = "✌";
       break;
   }
 
