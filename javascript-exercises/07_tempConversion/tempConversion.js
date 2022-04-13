@@ -1,3 +1,5 @@
+"use strict";
+
 // I personally used .toFixed(1) because I found it
 // more readable than 'Math.round(formula * 10) * 10.
 

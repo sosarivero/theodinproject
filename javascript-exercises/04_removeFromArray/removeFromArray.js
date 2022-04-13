@@ -1,3 +1,5 @@
+"use strict";
+
 const removeFromArray = function(array, ...targets) {
   // Make a clone of the array to avoid side effects.
   const returnArray = [...array]

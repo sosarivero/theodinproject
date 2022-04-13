@@ -1,3 +1,5 @@
+"use strict";
+
 const repeatString = function(string, n) {
   if (n < 0) {
     return "ERROR";
