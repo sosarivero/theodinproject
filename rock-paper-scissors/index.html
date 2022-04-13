@@ -4,8 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <div class="results">
+      <p>Your score:</p> <span id="human-score"></span>
+      <p>Computer' score:</p> <span id="computer-score"></span>
+    </div>
+    <div class="plays">
+      <p>Your play:</p> <span id="human-play"></span>
+      <p>Computer's play:</p> <span id="computer-play"></span>
+    </div>
+    <div class="buttons">
+      <input type="button" onclick="playRound('Rock', computerPlay())" value="ROCK!"></input>
+      <input type="button" onclick="playRound('Paper', computerPlay())" value="PAPER!"></input>
+      <input type="button" onclick="playRound('Scissors', computerPlay())" value="SCISSORS!"></input>
+    </div>
+  </body>
 </html>

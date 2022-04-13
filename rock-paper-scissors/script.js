@@ -5,10 +5,8 @@ function computerPlay() {
   switch (choice) {
     case 0:
       return "Rock";
-      break;
     case 1:
       return "Paper";
-      break;
     case 2:
       return "Scissors";
   }
@@ -22,18 +20,20 @@ function playRound(playerSelection, computerSelection) {
   } else if ((playerSelection === "Rock" && computerSelection === "Scissors")
           || (playerSelection === "Paper" && computerSelection === "Rock")
           || (playerSelection === "Scissors" && computerSelection === "Paper")) {
-            return `You win! ${playerSelection} beats ${computerSelection}`;
+            playerScoreCounter.textContent = ++playerScore;
   } else {
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    computerScoreCounter.textContent = ++computerScore;
   }
 }
 
-function game(n) {
-  for (let i = 0; i < n; i++) {
-    let playerSelection = prompt("Rock, paper, or scissors?");
-    alert(playRound(playerSelection, computerPlay()));
-  }
-}
-
+let playerScore = 0;
+let computerScore = 0;
 const ROUNDS = 5;
-game(ROUNDS);
+
+const playerScoreCounter = document.querySelector('#human-score');
+playerScoreCounter.textContent = playerScore;
+const computerScoreCounter = document.querySelector('#computer-score');
+computerScoreCounter.textContent = computerScore;
+
+const playerHand = document.querySelector('#human-play');
+const computerHand = document.querySelector('#computer-play');
