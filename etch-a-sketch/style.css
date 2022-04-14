@@ -1,9 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #telesketch {
-  width: 720px;
-  height: 720px;
+  width: 480px;
+  height: 480px;
   display: grid;
 }
 
 .grid-cell {
   border: dotted black 1px;
+  background: white;
 }
