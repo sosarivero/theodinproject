@@ -1,0 +1,10 @@
+#telesketch {
+  width: 720px;
+  height: 720px;
+  border: solid black 2px;
+  display: grid;
+}
+
+.grid-cell {
+  border: solid gray 1px;
+}
