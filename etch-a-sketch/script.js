@@ -11,7 +11,7 @@ function createGrid(size) {
 
     // Convert cells on black on hover.
     gridCell.addEventListener('mouseenter', event => {
-      event.target.style.background = "white";
+      event.target.style.background = "black";
     });
 
     telesketch.appendChild(gridCell);

@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: black;
+  background: white;
 }
 
 #play-space {
@@ -24,6 +24,6 @@ body {
 }
 
 .grid-cell {
-  border: dotted white 1px;
-  background: black;
+  border: dotted black 1px;
+  background: white;
 }
