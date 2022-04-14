@@ -18,6 +18,25 @@ function createGrid(size) {
   }
 }
 
+
+function rainbow() {
+  const cells = Array.from(document.querySelectorAll('.grid-cell'));
+  
+  // First we have to remove the previous event listener in all cells.
+  cells.forEach(cell => {
+    removeEventListener('mouseenter', cell)
+  });
+
+  cells.forEach(cell => {
+    cell.addEventListener('mouseenter', event => {
+    // Source for the random color generation:
+    // Chris Coyier, CSS-Tricks.
+    // https://css-tricks.com/snippets/javascript/random-hex-color/
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    event.target.style.background = `#${randomColor}`
+    })});
+  }
+
 function resetGrid() {
   let newSize = window.prompt("How many squares per side in new grid? (1-100)");
 
@@ -27,4 +46,4 @@ function resetGrid() {
   createGrid(newSize);
 }
 
-createGrid(16);
+createGrid(16)
