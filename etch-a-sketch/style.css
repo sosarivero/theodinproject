@@ -8,6 +8,14 @@ body {
   align-items: center;
 }
 
+#play-space {
+  display: flex;
+}
+
+#buttons {
+  align-self: center;
+}
+
 #telesketch {
   width: 480px;
   height: 480px;

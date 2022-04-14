@@ -18,6 +18,13 @@ function createGrid(size) {
   }
 }
 
+function resetGrid() {
+  let newSize = window.prompt("How many squares per side in new grid? (1-100)");
+
+  // TODO: Add error prompt for when user adds incorrect input.
+
+  telesketch.innerHTML = "";
+  createGrid(newSize);
+}
+
 createGrid(16);
-
-
