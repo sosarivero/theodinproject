@@ -13,9 +13,7 @@ const palindromes = function (s) {
   reversed = raw.split('').reverse().join('');
 
   for (let i = 0; i < raw.length; i++) {
-    if (reversed[i] !== raw[i]) {
-      return false;
-    }
+    if (reversed[i] !== raw[i]) return false;
   }
   return true;
 };
