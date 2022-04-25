@@ -32,3 +32,18 @@ function operate(a, operator, b) {
       break;
   }
 }
+
+let display = document.getElementById('display');
+let operation = '';
+
+// Create an array for every operator and operand button ('.op')
+let ops = Array.from(document.querySelectorAll('.op'));
+
+ops.forEach((button) =>
+  button.addEventListener('click', function () {
+    // Adds the operator/operand to the variable string...
+    operation += button.innerHTML;
+    // Updates the display
+    display.innerHTML = operation;
+  })
+);
