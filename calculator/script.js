@@ -1,3 +1,7 @@
+// TODO: Above user from adding multiple dots.
+// Round numbers so they don't overflow.
+// Fix displays graphical overflow when operation gets really big. divs?
+
 'use strict';
 
 function add(a, b) {
