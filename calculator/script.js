@@ -29,6 +29,8 @@ function operate(a, operator, b) {
   }
 }
 
+const OPERATORS = /([\+\*\-\/])/;
+
 let operationDisplay = document.getElementById('operation-display');
 let resultDisplay = document.getElementById('result-display');
 
@@ -62,8 +64,7 @@ operators.forEach((button) =>
       operatorPresent = true;
     } else {
       // Create an array from the operation string.
-      let op = operation.split(/([\+\*\-\/])/);
-      debugger;
+      let op = operation.split(OPERATORS);
       // Use the array as arguments to execute the operations.
       // Note that they need to be casted into numbers, otherwise it concats.
       ANSWER = operate(Number(op[0]), op[1], Number(op[2]));
@@ -74,3 +75,26 @@ operators.forEach((button) =>
     }
   })
 );
+
+document.getElementById('equals').addEventListener('click', function () {
+  let op = operation.split(OPERATORS);
+  if (op.length === 3) {
+    ANSWER = operate(Number(op[0]), op[1], Number(op[2]));
+    operation = ANSWER;
+    operationDisplay.innerHTML = operation;
+    resultDisplay.innerHTML = ANSWER;
+    operatorPresent = false;
+  }
+});
+
+document.getElementById('clear').addEventListener('click', function () {
+  operatorPresent = false;
+  operation = '';
+  operationDisplay.innerHTML = operation;
+});
+
+document.getElementById('delete').addEventListener('click', function () {
+  if (OPERATORS.test(operation.slice(-1))) operatorPresent = false;
+  operation = operation.slice(0, -1);
+  operationDisplay.innerHTML = operation;
+});
