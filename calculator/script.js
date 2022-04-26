@@ -33,7 +33,7 @@ function operate(a, operator, b) {
   }
 }
 
-let display = document.getElementById('display');
+let operationDisplay = document.getElementById('operation-display');
 let operation = '';
 
 // Create an array for every operator and operand button ('.op')
@@ -44,6 +44,6 @@ ops.forEach((button) =>
     // Adds the operator/operand to the variable string...
     operation += button.innerHTML;
     // Updates the display
-    display.innerHTML = operation;
+    operationDisplay.innerHTML = operation;
   })
 );

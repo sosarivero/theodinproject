@@ -28,8 +28,15 @@ button {
   grid-column-start: 1;
   grid-column-end: 5;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: space-between;
+}
+
+#operation-display {
+  align-self: flex-start;
+}
+
+#result-display {
+  align-self: flex-end;
 }
 
 #plus {
