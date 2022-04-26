@@ -19,31 +19,58 @@ function divide(a, b) {
 function operate(a, operator, b) {
   switch (operator) {
     case '+':
-      add(a, b);
-      break;
+      return add(a, b);
     case '-':
-      substract(a, b);
-      break;
+      return substract(a, b);
     case '*':
-      multiply(a, b);
-      break;
+      return multiply(a, b);
     case '/':
-      divide(a, b);
-      break;
+      return divide(a, b);
   }
 }
 
 let operationDisplay = document.getElementById('operation-display');
+let resultDisplay = document.getElementById('result-display');
+
 let operation = '';
+let ANSWER;
 
-// Create an array for every operator and operand button ('.op')
-let ops = Array.from(document.querySelectorAll('.op'));
+let operatorPresent = false;
 
-ops.forEach((button) =>
+// Create an array for every operand button ('.op')
+let operands = Array.from(document.querySelectorAll('.operand'));
+
+operands.forEach((button) =>
   button.addEventListener('click', function () {
     // Adds the operator/operand to the variable string...
     operation += button.innerHTML;
     // Updates the display
     operationDisplay.innerHTML = operation;
+  })
+);
+
+let operators = Array.from(document.querySelectorAll('.operator'));
+
+operators.forEach((button) =>
+  button.addEventListener('click', function () {
+    if (!operatorPresent) {
+      // Adds the operator/operand to the variable string...
+      operation += button.innerHTML;
+      // Updates the display
+      operationDisplay.innerHTML = operation;
+      // Sets the Boolean to true.
+      operatorPresent = true;
+    } else {
+      // Create an array from the operation string.
+      let op = operation.split(/([\+\*\-\/])/);
+      debugger;
+      // Use the array as arguments to execute the operations.
+      // Note that they need to be casted into numbers, otherwise it concats.
+      ANSWER = operate(Number(op[0]), op[1], Number(op[2]));
+      // Actualize the operation string and displays.
+      operation = ANSWER + button.innerHTML;
+      operationDisplay.innerHTML = operation;
+      resultDisplay.innerHTML = ANSWER;
+    }
   })
 );
