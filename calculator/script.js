@@ -4,47 +4,17 @@
 
 'use strict';
 
-function add(a, b) {
-  return a + b;
-}
-
-function substract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  return a / b;
-}
-
-function operate(a, operator, b) {
-  switch (operator) {
-    case '+':
-      return add(a, b);
-    case '-':
-      return substract(a, b);
-    case '*':
-      return multiply(a, b);
-    case '/':
-      return divide(a, b);
-  }
-}
-
 const OPERATORS = /([\+\*\-\/])/;
-
-let operationDisplay = document.getElementById('operation-display');
-let resultDisplay = document.getElementById('result-display');
-
 let operation = '';
 let ANSWER;
 
-let operatorPresent = false;
-
-// Create an array for every operand button ('.op')
+let operationDisplay = document.getElementById('operation-display');
+let resultDisplay = document.getElementById('result-display');
+// Create an array for every operand and operator button
 let operands = Array.from(document.querySelectorAll('.operand'));
+let operators = Array.from(document.querySelectorAll('.operator'));
+
+let operatorPresent = false;
 
 operands.forEach((button) =>
   button.addEventListener('click', function () {
@@ -54,8 +24,6 @@ operands.forEach((button) =>
     operationDisplay.innerHTML = operation;
   })
 );
-
-let operators = Array.from(document.querySelectorAll('.operator'));
 
 operators.forEach((button) =>
   button.addEventListener('click', function () {
@@ -102,3 +70,33 @@ document.getElementById('delete').addEventListener('click', function () {
   operation = operation.slice(0, -1);
   operationDisplay.innerHTML = operation;
 });
+
+//TODO: Maybe refactor the simple functions into one-liners?
+function add(a, b) {
+  return a + b;
+}
+
+function substract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  return a / b;
+}
+
+function operate(a, operator, b) {
+  switch (operator) {
+    case '+':
+      return add(a, b);
+    case '-':
+      return substract(a, b);
+    case '*':
+      return multiply(a, b);
+    case '/':
+      return divide(a, b);
+  }
+}
