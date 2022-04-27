@@ -15,7 +15,6 @@ function operate(a, operator, b) {
       return divide(a, b);
   }
 }
-// TODO: Above user from adding multiple dots.
 // Round numbers so they don't overflow.
 // Fix displays graphical overflow when operation gets really big. divs?
 
@@ -43,23 +42,26 @@ operands.forEach((button) =>
 
 operators.forEach((button) =>
   button.addEventListener('click', function () {
-    if (!operatorPresent) {
-      // Adds the operator/operand to the variable string...
-      operation += button.innerHTML;
-      // Updates the display
-      operationDisplay.innerHTML = operation;
-      // Sets the Boolean to true.
-      operatorPresent = true;
-    } else {
-      // Create an array from the operation string.
-      let op = operation.split(OPERATORS);
-      // Use the array as arguments to execute the operations.
-      // Note that they need to be casted into numbers, otherwise it concats.
-      ANSWER = operate(Number(op[0]), op[1], Number(op[2]));
-      // Actualize the operation string and displays.
-      operation = ANSWER + button.innerHTML;
-      operationDisplay.innerHTML = operation;
-      resultDisplay.innerHTML = ANSWER;
+    // To avoid people from writing operators next to eachother
+    if (!OPERATORS.test(operation.slice(-1))) {
+      if (!operatorPresent) {
+        // Adds the operator/operand to the variable string...
+        operation += button.innerHTML;
+        // Updates the display
+        operationDisplay.innerHTML = operation;
+        // Sets the Boolean to true.
+        operatorPresent = true;
+      } else {
+        // Create an array from the operation string.
+        let op = operation.split(OPERATORS);
+        // Use the array as arguments to execute the operations.
+        // Note that they need to be casted into numbers, otherwise it concats.
+        ANSWER = operate(Number(op[0]), op[1], Number(op[2]));
+        // Actualize the operation string and displays.
+        operation = ANSWER + button.innerHTML;
+        operationDisplay.innerHTML = operation;
+        resultDisplay.innerHTML = ANSWER;
+      }
     }
   })
 );
