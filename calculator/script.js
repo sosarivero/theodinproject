@@ -1,11 +1,30 @@
+//TODO: Maybe refactor the simple functions into one-liners?
+let add = (a, b) => a + b;
+let substract = (a, b) => a - b;
+let multiply = (a, b) => a * b;
+let divide = (a, b) => a / b;
+
+function operate(a, operator, b) {
+  switch (operator) {
+    case '+':
+      return add(a, b);
+    case '-':
+      return substract(a, b);
+    case '*':
+      return multiply(a, b);
+    case '/':
+      return divide(a, b);
+  }
+}
 // TODO: Above user from adding multiple dots.
 // Round numbers so they don't overflow.
 // Fix displays graphical overflow when operation gets really big. divs?
 
-'use strict';
+('use strict');
 
 const OPERATORS = /([\+\*\-\/])/;
 let operation = '';
+let operatorPresent = false;
 let ANSWER;
 
 let operationDisplay = document.getElementById('operation-display');
@@ -13,8 +32,6 @@ let resultDisplay = document.getElementById('result-display');
 // Create an array for every operand and operator button
 let operands = Array.from(document.querySelectorAll('.operand'));
 let operators = Array.from(document.querySelectorAll('.operator'));
-
-let operatorPresent = false;
 
 operands.forEach((button) =>
   button.addEventListener('click', function () {
@@ -70,33 +87,3 @@ document.getElementById('delete').addEventListener('click', function () {
   operation = operation.slice(0, -1);
   operationDisplay.innerHTML = operation;
 });
-
-//TODO: Maybe refactor the simple functions into one-liners?
-function add(a, b) {
-  return a + b;
-}
-
-function substract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  return a / b;
-}
-
-function operate(a, operator, b) {
-  switch (operator) {
-    case '+':
-      return add(a, b);
-    case '-':
-      return substract(a, b);
-    case '*':
-      return multiply(a, b);
-    case '/':
-      return divide(a, b);
-  }
-}
