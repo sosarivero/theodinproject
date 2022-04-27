@@ -83,6 +83,8 @@ document.getElementById('equals').addEventListener('click', function () {
   let op = operation.split(OPERATORS);
   if (op.length === 3) {
     ANSWER = operate(Number(op[0]), op[1], Number(op[2]));
+    // To limit number of decimals in float numbers for display purposes.
+    if (ANSWER % 1 !== 0) ANSWER = ANSWER.toFixed(4);
     operation = ANSWER;
     operationDisplay.innerHTML = operation;
     resultDisplay.innerHTML = ANSWER;
