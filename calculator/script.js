@@ -1,4 +1,3 @@
-//TODO: Maybe refactor the simple functions into one-liners?
 let add = (a, b) => a + b;
 let substract = (a, b) => a - b;
 let multiply = (a, b) => a * b;
@@ -64,6 +63,19 @@ operators.forEach((button) =>
     }
   })
 );
+
+document.getElementById('dot').addEventListener('click', function () {
+  if (operatorPresent === false && !operation.includes('.')) {
+    operation += '.';
+    operationDisplay.innerHTML = operation;
+  } else if (operatorPresent === true) {
+    let op = operation.split(OPERATORS);
+    if (!op[2].includes('.')) {
+      operation += '.';
+      operationDisplay.innerHTML = operation;
+    }
+  }
+});
 
 document.getElementById('equals').addEventListener('click', function () {
   let op = operation.split(OPERATORS);
