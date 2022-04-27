@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 32px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* To make button texts inherit same settings as family. */
+button {
+  font-family: inherit;
+  font-size: 1em;
+}
+
+#calculator {
+  height: 100vh;
+  background-color: gray;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 2fr repeat(5, 1fr);
+  padding: 0 5px;
+  grid-gap: 5px;
+}
+
+#display {
+  background-color: white;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#operation-display {
+  align-self: flex-start;
+}
+
+#result-display {
+  align-self: flex-end;
+}
+
+#plus {
+  grid-row: span 2;
+}

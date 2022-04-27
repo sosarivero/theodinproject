@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="results">
+      <p>Your score: <span id="human-score">☆☆☆☆☆</span></p> 
+      <p>Computer' score: <span id="computer-score">☆☆☆☆☆</span></p> 
+    </div>
+    <div class="plays">
+      <p>Your play: <span id="human-play"></span></p> 
+      <p>Computer's play: <span id="computer-play"></span></p> 
+    </div>
+    <div class="buttons">
+      <input class="choice" type="button" onclick="playRound('Rock', computerPlay())" value="ROCK!"></input>
+      <input class="choice" type="button" onclick="playRound('Paper', computerPlay())" value="PAPER!"></input>
+      <input class="choice" type="button" onclick="playRound('Scissors', computerPlay())" value="SCISSORS!"></input>
+      <input class="reset" type="button" onclick="reset()" value="RESET" style="visibility: hidden;"></input>
+    </div>
+    <p id="game-state">Choose your play to start! Best of five rounds.</p>
+  </body>
+</html>
