@@ -92,12 +92,12 @@ RSpec.describe 'Nested Array Exercises' do
     context "when there are four nil's in the given array" do
       let(:array) { [[nil, 'Bob', nil], [nil, nil, 'Bill']] }
 
-      xit 'returns the number 4' do
+      it 'returns the number 4' do
         expect(count_empty_seats(array)).to eq(4)
       end
     end
 
-    xit 'does not mutate the original array' do
+    it 'does not mutate the original array' do
       count_empty_seats(array)
       expect(array).to eq([[nil, 'Bob', 'Joe'], [nil, nil, 'Bill']])
     end
@@ -113,7 +113,7 @@ RSpec.describe 'Nested Array Exercises' do
         ]
       end
 
-      xit 'returns the hash with the name Ruby' do
+      it 'returns the hash with the name Ruby' do
         expected_output = { name: 'Ruby', is_my_favorite?: true }
         expect(find_favorite(array)).to eq(expected_output)
       end
@@ -128,7 +128,7 @@ RSpec.describe 'Nested Array Exercises' do
         ]
       end
 
-      xit 'returns nil' do
+      it 'returns nil' do
         expected_output = nil
         expect(find_favorite(array)).to eq(expected_output)
       end
