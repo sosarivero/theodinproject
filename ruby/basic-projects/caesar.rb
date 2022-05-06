@@ -1,19 +1,17 @@
+# frozen_string_literal: true
+
 def caesar_cipher(string, shift)
   # Split the string into chars, then convert them to integers
-  unicode = string.split('').map(&:ord)
-  # Create a new array of chars with map
-  solution = unicode.map do |int|
-    if int.between?('A'.ord, 'Z'.ord)
-      shifted_int = (int - 'A'.ord + shift) % 26 + 'A'.ord
-      shifted_int.chr.upcase
-    elsif int.between?('a'.ord, 'z'.ord)
-      shifted_int = (int - 'a'.ord + shift) % 26 + 'a'.ord
-      shifted_int.chr.downcase
+  rotated_array = string.split('').map do |char|
+    if char.match?(/[[:alpha:]]/)
+      unicode = char.ord
+      lettercase = unicode.between?('A'.ord, 'Z'.ord) ? 'A'.ord : 'a'.ord
+      ((unicode - lettercase + shift) % 26 + lettercase).chr
     else
-      int.chr
+      char
     end
   end
-  solution.join
+  rotated_array.join
 end
 
-p caesar_cipher("SERR CVMMN!", 13)
+p caesar_cipher('SERR CVMMN!', 13)
