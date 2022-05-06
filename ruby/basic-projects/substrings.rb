@@ -3,7 +3,7 @@
 def substrings(string, word_array)
   frequency_dictionary = {}
   word_array.each do |word|
-    matches = string.downcase.scan(/#{word.downcase}/)
+    matches = string.scan(/#{word}/i)
     frequency_dictionary[word] = matches.length unless matches.length.zero?
   end
   frequency_dictionary
