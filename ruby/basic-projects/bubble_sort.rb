@@ -2,14 +2,15 @@
 
 def bubble_sort(array)
   loop do
-    changed = false
+    # Assume it is all sorted until a change is made
+    all_sorted = true
     array.each_index do |i|
       if !array[i + 1].nil? && array[i] > array[i + 1]
         array[i], array[i + 1] = array[i + 1], array[i]
-        changed = true
+        all_sorted = false
       end
     end
-    return array unless changed
+    return array if all_sorted
   end
 end
 
