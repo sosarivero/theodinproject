@@ -23,9 +23,14 @@ class Board
   end
 
   def to_s
+    # Creates the printable version of the board, changing nil for empty spaces
     p = @board.map { |cell| cell.nil? ? ' ' : cell }
-
     "#{p[0]} | #{p[1]} | #{p[2]}\n--+---+---\n#{p[3]} | #{p[4]} | #{p[5]}\n--+---+---\n#{p[6]} | #{p[7]} | #{p[8]}\n"
+    #   |   |
+    # --+---+---
+    #   |   |
+    # --+---+---
+    #   |   |
   end
 end
 
