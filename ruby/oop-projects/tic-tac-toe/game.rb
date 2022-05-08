@@ -8,8 +8,9 @@ class Board
   def initialize
     # Create the following array: [nil, nil, nil, nil, nil, nil, nil, nil, nil]
     @board = Array.new(9)
-    @available_spaces = board.each_index { |i| i if board[i].nil? }
+    @available_spaces = @board.map.with_index { |cell, i| i + 1 if cell.nil? }
   end
+
 
   def full?
     board.none?(nil)
@@ -23,16 +24,17 @@ class Board
   end
 
   def to_s
-    # Creates the printable version of the board, changing nil for empty spaces
-    p = @board.map { |cell| cell.nil? ? ' ' : cell }
+    # Represents empty spaces with the numbers that players can use to input moves
+    # 1 | 2 | 3
+    # --+---+---
+    # 4 | 5 | 6
+    # --+---+---
+    # 7 | 8 | 9
+    p = @board.map.with_index { |cell, i| cell.nil? ? i + 1 : cell }
     "#{p[0]} | #{p[1]} | #{p[2]}\n--+---+---\n#{p[3]} | #{p[4]} | #{p[5]}\n--+---+---\n#{p[6]} | #{p[7]} | #{p[8]}\n"
-    #   |   |
-    # --+---+---
-    #   |   |
-    # --+---+---
-    #   |   |
   end
 end
 
 hello = Board.new
 puts hello
+pp hello.available_spaces
