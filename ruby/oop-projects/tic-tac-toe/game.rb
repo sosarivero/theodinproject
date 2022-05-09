@@ -1,17 +1,29 @@
 # frozen_string_literal: true
 
 # Class for tic-tac-toe board-game
-class Board
-  attr_accessor :board, :available_spaces
+class TicTacToeBoard
+  attr_accessor :array_board, :available_spaces
 
   def initialize
     # Create the following array: [nil, nil, nil, nil, nil, nil, nil, nil, nil]
-    @board = Array.new(9)
-    @available_spaces = @board.map.with_index { |cell, i| i if cell.nil? }
+    @array_board = Array.new(9)
+    @available_spaces = @array_board.map.with_index { |cell, i| i if cell.nil? }
+  end
+
+  def update(mark, position)
+    position = position.to_i
+    if @array_board[position].nil?
+      @array_board[position] = mark
+      @available_spaces.delete_at(position)
+      true
+    else
+      puts 'Invalid or unavailable position!'
+      false
+    end
   end
 
   def full?
-    board.none?(nil)
+    @array_board.none?(nil)
   end
 
   def to_s
@@ -21,35 +33,87 @@ class Board
     # 4 | 5 | 6
     # --+---+---
     # 7 | 8 | 9
-    p = @board.map.with_index { |cell, i| cell.nil? ? i : cell }
+    p = @array_board.map.with_index { |cell, i| cell.nil? ? i : cell }
     "#{p[0]} | #{p[1]} | #{p[2]}\n--+---+---\n#{p[3]} | #{p[4]} | #{p[5]}\n--+---+---\n#{p[6]} | #{p[7]} | #{p[8]}\n"
   end
 end
 
 # Class for the tic-tac-toe players
 class Player
-  attr_reader :owned_cells
+  attr_reader :owned_cells, :mark, :name
 
-  @@count = 0
-
-  def initialize(cpu: false)
-    @cpu = cpu
-    @mark = (@@count == 0) ? '◯' : '✗'
-    @@count += 1
+  def initialize(name = 'Human Player', mark = 'O')
+    @name = name
+    @mark = mark
     @owned_cells = []
   end
 
   def move(board, cell_index)
-    if board.available_spaces.include?(cell_index)
-      board.board[cell_index] = @mark
-      @owned_cells.push(cell_index)
-    else
-      puts 'That cell is not available!'
-    end
+    return false unless board.update(@mark, cell_index)
+
+    @owned_cells.push(cell_index)
+    true
   end
 
   def winner?
     win_conditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [3, 4, 6]]
     win_conditions.any? { |line| (line - @owned_cells).empty? }
   end
+
+  def to_s
+    @name
+  end
 end
+
+# Class for CPU controlled player. Inherits from Player
+class CPU < Player
+  def initialize
+    super('CPU Player', 'X')
+  end
+
+  def move(board)
+    random_move = board.available_spaces.sample
+    super(board, random_move)
+  end
+end
+
+# Class to manage the game' state
+class Game
+  def initialize
+    @game_board = TicTacToeBoard.new
+    @player1 = Player.new
+    @player2 = CPU.new
+    @last_turn = 'player1'
+    puts @game_board
+  end
+
+  def play_round(player)
+    puts "#{player} turn:"
+    if player == @player1
+      move = gets.chomp.to_i
+      player.move(@game_board, move)
+    else
+      player.move(@game_board)
+    end
+    @last_turn = player
+    puts @game_board
+  end
+
+  def winner?
+    @player1.winner? || @player2.winner?
+  end
+
+  def play_game
+    until winner? || @game_board.full?
+      turn = @last_turn == @player1 ? @player2 : @player1
+      play_round(turn)
+    end
+
+    puts 'DRAW!' if @game_board.full?
+    winner = @player1.winner? ? @player1 : @player2
+    puts "#{winner} WINS!" if winner?
+  end
+end
+
+game = Game.new
+game.play_game
