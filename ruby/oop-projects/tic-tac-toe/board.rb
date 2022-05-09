@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Class for tic-tac-toe board-game
-class TicTacToeBoard
+class Board
   attr_accessor :array_board, :available_spaces
 
   def initialize
