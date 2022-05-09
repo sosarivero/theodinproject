@@ -29,6 +29,6 @@ class Game
 
     puts 'DRAW!' if @board.full?
     winner = @player1.winner? ? @player1 : @player2
-    puts "#{winner} WINS!" if winner?
+    puts "#{winner} (#{winner.mark}) WINS!" if winner?
   end
 end
