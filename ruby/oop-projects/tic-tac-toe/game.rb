@@ -42,7 +42,7 @@ end
 class Player
   attr_reader :owned_cells, :mark, :name
 
-  def initialize(name = 'Human Player', mark = 'O')
+  def initialize(name, mark)
     @name = name
     @mark = mark
     @owned_cells = []
@@ -65,37 +65,21 @@ class Player
   end
 end
 
-# Class for CPU controlled player. Inherits from Player
-class CPU < Player
-  def initialize
-    super('CPU Player', 'X')
-  end
-
-  def move(board)
-    random_move = board.available_spaces.sample
-    super(board, random_move)
-  end
-end
-
 # Class to manage the game' state
 class Game
   def initialize
     @game_board = TicTacToeBoard.new
-    @player1 = Player.new
-    @player2 = CPU.new
-    @last_turn = 'player1'
+    @player1 = Player.new('Mario', 'O')
+    @player2 = Player.new('Luigi', 'X')
+    @next_turn = @player1
     puts @game_board
   end
 
   def play_round(player)
     puts "#{player} turn:"
-    if player == @player1
-      move = gets.chomp.to_i
-      player.move(@game_board, move)
-    else
-      player.move(@game_board)
-    end
-    @last_turn = player
+    move = gets.chomp.to_i
+    player.move(@game_board, move)
+    @next_turn = player == @player1 ? @player2 : @player1
     puts @game_board
   end
 
@@ -104,10 +88,7 @@ class Game
   end
 
   def play_game
-    until winner? || @game_board.full?
-      turn = @last_turn == @player1 ? @player2 : @player1
-      play_round(turn)
-    end
+    play_round(@next_turn) until winner? || @game_board.full?
 
     puts 'DRAW!' if @game_board.full?
     winner = @player1.winner? ? @player1 : @player2
