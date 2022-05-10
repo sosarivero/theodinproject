@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 # Class for tic-tac-toe player
 class Player
   attr_reader :owned_cells, :mark, :name
@@ -37,6 +35,7 @@ end
 # Class for simple CPU player that just uses randomness to choose cells
 class CPU < Player
   def move(board)
+    # Need to add the +1 because of the way in which user interface is implemented. Should change.
     move = board.available_spaces.sample + 1
     puts "Computer's turn: #{move}"
     super(board, move)
