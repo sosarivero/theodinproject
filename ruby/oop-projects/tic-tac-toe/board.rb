@@ -11,10 +11,9 @@ class Board
   end
 
   def update(mark, position)
-    position = position.to_i
     if @array_board[position].nil?
       @array_board[position] = mark
-      @available_spaces.delete_at(position)
+      @available_spaces.delete(position)
       true
     else
       puts 'Invalid or unavailable position!'
@@ -33,7 +32,12 @@ class Board
     # 4 | 5 | 6
     # --+---+---
     # 7 | 8 | 9
-    p = @array_board.map.with_index { |cell, i| cell.nil? ? i : cell }
-    "#{p[0]} | #{p[1]} | #{p[2]}\n--+---+---\n#{p[3]} | #{p[4]} | #{p[5]}\n--+---+---\n#{p[6]} | #{p[7]} | #{p[8]}\n"
+    # Add +1 in the map in order to create the visual representation without 0-index, as it is most user-friendly visually.
+    p = @array_board.map.with_index { |cell, i| cell.nil? ? i + 1 : cell }
+    "\n#{p[0]} | #{p[1]} | #{p[2]}\n" \
+      "--+---+---\n" \
+      "#{p[3]} | #{p[4]} | #{p[5]}\n" \
+      "--+---+---\n" \
+      "#{p[6]} | #{p[7]} | #{p[8]}\n\n"
   end
 end

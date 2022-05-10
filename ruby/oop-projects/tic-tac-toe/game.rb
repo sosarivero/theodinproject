@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+WIN_CONDITIONS = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]].freeze
+
 # Class to manage the game' state
 class Game
   def initialize
@@ -12,7 +14,7 @@ class Game
 
   def play_round(player)
     loop do
-      puts "#{player} turn:"
+      print "#{player} turn: "
       move = gets.chomp.to_i
       break if player.move(@board, move)
     end
@@ -21,14 +23,21 @@ class Game
   end
 
   def winner?
-    @player1.winner? || @player2.winner?
+    [@player1, @player2].each do |player|
+      return player if WIN_CONDITIONS.any? do |line|
+        (line - player.owned_cells).empty?
+      end
+    end
+    false
   end
 
   def play_game
     play_round(@next_turn) until winner? || @board.full?
 
-    puts 'DRAW!' if @board.full?
-    winner = @player1.winner? ? @player1 : @player2
-    puts "#{winner} (#{winner.mark}) WINS!" if winner?
+    if winner?
+      puts "#{winner?} (#{winner?.mark}) WINS!"
+    elsif @board.full?
+      puts 'DRAW!'
+    end
   end
 end
