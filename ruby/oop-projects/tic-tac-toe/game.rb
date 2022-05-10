@@ -6,17 +6,15 @@ WIN_CONDITIONS = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 
 class Game
   def initialize
     @board = Board.new
-    @player1 = Player.new('Mario', 'O')
-    @player2 = Player.new('Luigi', 'X')
+    @player1 = Human.new('Human', 'O')
+    @player2 = CPU.new('Computer', 'X')
     @next_turn = @player1
     puts @board
   end
 
   def play_round(player)
     loop do
-      print "#{player} turn: "
-      move = gets.chomp.to_i
-      break if player.move(@board, move)
+      break if player.move(@board)
     end
     puts @board
     @next_turn = player == @player1 ? @player2 : @player1
