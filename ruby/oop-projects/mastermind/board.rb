@@ -7,16 +7,17 @@ class DecodingBoard
   end
 
   def check(guess)
-    feedback = []
     feedback = guess.split('').map.with_index do |char, i|
       if char == @code[i]
-        feedback.push('X')
+        'X'
       elsif code.include?(char)
-        feedback.push('O')
+        'O'
       else
-        feedback.push('-')
+        '-'
       end
     end
+    # So the feedback always follows the same format and does not give information
+    feedback.sort.reverse.join(' ')
   end
 end
 
