@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Class for the Mastermind decoding board
 class DecodingBoard
   attr_reader :code
@@ -20,6 +22,3 @@ class DecodingBoard
     feedback.sort.reverse.join(' ')
   end
 end
-
-test = DecodingBoard.new('1234')
-pp test.check('1435')
