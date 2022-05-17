@@ -41,7 +41,7 @@ class DecodingBoard
     if (guess.split('') - @colors).empty?
       true
     else
-      puts "Incorrect input. List of valid colors: #{@colors}"
+      puts "Incorrect input. List of valid colors: #{@colors}."
       false
     end
   end
@@ -50,7 +50,7 @@ class DecodingBoard
     if guess.length == @holes
       true
     else
-      puts "Incorrect input. Guesses must be of length #{@holes}"
+      puts "Incorrect input. Guesses must be of length #{@holes}."
       false
     end
   end
@@ -59,7 +59,7 @@ class DecodingBoard
     if guess.chars.uniq.count == @holes
       true
     else
-      puts 'Incorrect input. Colors cannot be repeated'
+      puts 'Incorrect input. Colors cannot be repeated.'
       false
     end
   end
