@@ -3,7 +3,7 @@
 require_relative 'decoding_board'
 
 mastermind = DecodingBoard.new(holes: 3, max_colors: 5)
-
+pp mastermind.code
 until mastermind.winner?
   guess = ''
   loop do
@@ -15,4 +15,7 @@ until mastermind.winner?
   puts mastermind
 end
 
-puts 'You win!'
+puts "--------------------------------\n" \
+  "Very well done!\n" \
+  "You found the code: #{mastermind.code}" \
+  "\n--------------------------------\n\n"
